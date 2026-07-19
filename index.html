@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proposta — Reformulação do Site VetUnity</title>
+  <meta name="description" content="Proposta comercial: reformulação do site da VetUnity. Site enxuto de 7 páginas focado em agendamento e encaminhamento.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Glitter WebGL de página inteira (port vanilla do 21st.dev) -->
+  <canvas id="glitter" aria-hidden="true"></canvas>
+
+  <!-- Overlay grunge por cima de tudo (screen, .18) -->
+  <div class="grunge-overlay" aria-hidden="true">
+    <!-- Solte sua textura em assets/grunge-overlay.png; sem ela, cai no ruído SVG -->
+    <img src="assets/grunge-overlay.png" alt=""
+         onerror="this.parentElement.classList.add('grunge-overlay--fallback'); this.remove()">
+  </div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <nav class="navbar">
+    <div class="container navbar__inner">
+      <a href="#hero" class="navbar__logo">
+        <img src="assets/logo-lucas-liam-responsiva.svg" alt="Lucas Liam Logo">
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       SEÇÃO 1 — HERO ÂNCORA (slider de valor de tabela)
+       ============================================================ -->
+  <header class="hero" id="hero">
+    <div class="hero__content container">
+      <p class="tape reveal" data-reveal>Proposta comercial</p>
+
+      <h1 class="hero__title reveal grunge-text" style="--grunge-opacity: 0.70; --grunge-size: 1500px auto;" data-reveal>
+        <span class="grunge-text__base">Um site à altura<br>da <em>VetUnity.</em></span>
+        <span class="grunge-text__texture" aria-hidden="true">Um site à altura<br>da <em>VetUnity.</em></span>
+      </h1>
+
+      <p class="hero__subtitle reveal" data-reveal>
+        Reformulação completa. 7 páginas.<br>
+        Mais agendamentos. Mais encaminhamentos. Mais autoridade.
+      </p>
+
+
+      <a href="#diagnostico" class="btn btn--primary btn--grunge reveal" data-reveal>
+        <span class="btn__content">
+          Ver diagnóstico completo
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <p class="hero__confidential reveal" data-reveal>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Proposta exclusiva e confidencial
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         SEÇÃO DE ESTIMATIVA DE MERCADO (Simulador de Preço)
+         ============================================================ -->
+    <section class="section section--alt" id="estimativa" aria-labelledby="estimativa-title">
+      <div class="container container--narrow">
+        <div class="section__head">
+          <p class="tape tape--tilt-l reveal" data-reveal>Estimativa de Mercado</p>
+          <h2 class="section__title reveal grunge-text" style="--grunge-opacity: 0.70;" data-reveal id="estimativa-title">
+            <span class="grunge-text__base">Custo de produção<br><em>agência padrão.</em></span>
+            <span class="grunge-text__texture" aria-hidden="true">Custo de produção<br><em>agência padrão.</em></span>
+          </h2>
+          <p class="section__lead reveal" data-reveal>
+            Simule o custo no mercado tradicional para o volume e escopo deste projeto.
+          </p>
+        </div>
+
+        <!-- Âncora interativa reestruturada -->
+        <div class="anchor reveal" data-reveal>
+          <p class="anchor__label" id="slider-label">Número de Páginas</p>
+
+          <div class="anchor__slider-row">
+            <span class="anchor__bound">1<span class="anchor__per"> pág.</span></span>
+            <div class="anchor__track-wrap">
+              <span class="anchor__chip" id="slider-chip" aria-hidden="true">10<span> págs.</span></span>
+              <!-- [PÁGINAS]: de 1 a 10 páginas -->
+              <input type="range" id="price-slider" min="1" max="10" step="1" value="10"
+                     aria-labelledby="slider-label" aria-valuetext="10 páginas">
+            </div>
+            <span class="anchor__bound">10<span class="anchor__per"> págs.</span></span>
+          </div>
+
+          <div class="anchor__bottom-layout">
+            
+            <div class="anchor__addons-col">
+              <p class="anchor__label">Adicionais de Escopo</p>
+              <div class="addons-stack">
+                <label class="addon-item">
+                  <input type="checkbox" class="addon-checkbox" value="350" data-gift="true">
+                  <span class="addon-btn">Elaboração de Copy Institucional</span>
+                </label>
+                <label class="addon-item">
+                  <input type="checkbox" class="addon-checkbox" value="500">
+                  <span class="addon-btn">Animações Avançadas</span>
+                </label>
+                <label class="addon-item">
+                  <input type="checkbox" class="addon-checkbox" value="150" data-gift="true">
+                  <span class="addon-btn">Direcionamento ao CRM</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="anchor__total-col">
+              <p class="anchor__label">Custo Estimado no Mercado</p>
+              <p class="anchor__total">
+                <span class="grunge-text" style="--grunge-opacity: 0.80;">
+                  <span class="grunge-text__base"><span class="currency">R$</span><span data-counter-layer="anchor-total">5000</span></span>
+                  <span class="grunge-text__texture" aria-hidden="true"><span class="currency">R$</span><span data-counter-layer="anchor-total">5000</span></span>
+                </span>
+              </p>
+              <p class="anchor__caption anchor__caption--large" id="anchor-caption">R$ 500 / página</p>
+            </div>
+            
+          </div>
+          
+          <p class="anchor__disclaimer">
+            * Valores podem alterar conforme complexidade e necessidade do projeto.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ============================================================
+         SEÇÃO 3 — PLANO DE AÇÃO (dossiê com abas-pasta — SOLUÇÕES)
+         ============================================================ -->
+    <section class="section section--alt" id="plano" aria-labelledby="plano-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="tape tape--tilt-l reveal" data-reveal>02 — Plano de ação</p>
+          <h2 class="section__title reveal grunge-text" style="--grunge-opacity: 0.70;" data-reveal id="plano-title">
+            <span class="grunge-text__base">O tratamento:<br>reformulação <em>UX + UI.</em></span>
+            <span class="grunge-text__texture" aria-hidden="true">O tratamento:<br>reformulação <em>UX + UI.</em></span>
+          </h2>
+          <p class="section__lead reveal" data-reveal>
+            Cada achado do diagnóstico tem uma solução direta. Site novo, enxuto,
+            desenhado pela jornada de quem agenda e de quem encaminha.
+          </p>
+        </div>
+
+        <div class="dossier window reveal" data-reveal data-tabs="solutions">
+          <div class="window__halo" aria-hidden="true"></div>
+
+          <div class="tabs" role="tablist" aria-label="Soluções propostas">
+            <button class="tab is-active" role="tab" aria-selected="true" aria-controls="s-panel-0" id="s-tab-0"><span class="tab__num" aria-hidden="true">S.01</span>ARQUITETURA &amp; UX</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-1" id="s-tab-1" tabindex="-1"><span class="tab__num" aria-hidden="true">S.02</span>NOVO UI</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-2" id="s-tab-2" tabindex="-1"><span class="tab__num" aria-hidden="true">S.03</span>CONVERSÃO</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-3" id="s-tab-3" tabindex="-1"><span class="tab__num" aria-hidden="true">S.04</span>AUTORIDADE</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-4" id="s-tab-4" tabindex="-1"><span class="tab__num" aria-hidden="true">S.05</span>SEO &amp; MOBILE</button>
+          </div>
+
+          <!-- TAB 1 -->
+          <div class="panel panel--split is-active" role="tabpanel" id="s-panel-0" aria-labelledby="s-tab-0">
+            <div class="panel__visual panel__visual--flow">
+              <div class="flow-chart">
+                <div class="flow-node flow-node--root">HOME</div>
+                <div class="flow-branch">
+                  <div class="flow-node">ESPECIALIDADES</div>
+                  <div class="flow-node">SOBRE + EQUIPE</div>
+                </div>
+                <div class="flow-leaves">
+                  <div class="flow-node">DIAGNÓSTICO<br>E LAB</div>
+                  <div class="flow-node">ENCAMINHE</div>
+                  <div class="flow-node">CONTATO +<br>AGENDAMENTO</div>
+                  <div class="flow-node">SAÚDE PET</div>
+                </div>
+              </div>
+              <div class="visual-alert">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4m0 4h.01"/></svg>
+                <p><strong>Site atual:</strong> ~20 páginas, muitas repetidas ou vazias ("em breve").</p>
+              </div>
+            </div>
+            <div class="panel__content">
+              <span class="diagnosis-tag">DIAGNÓSTICO 01/05</span>
+              <h3 class="diagnosis-title">NAVEGAÇÃO COMPLEXA<br>E INCHADA</h3>
+              <ul class="diagnosis-list">
+                <li>Estrutura confusa e com excesso de páginas.</li>
+                <li>Menus e submenus que não guiam o usuário.</li>
+                <li>Conteúdo duplicado e páginas sem propósito.</li>
+                <li>Dificulta o acesso rápido ao que realmente importa.</li>
+              </ul>
+              <div class="solution-box">
+                <div class="solution-box__icon">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                </div>
+                <div class="solution-box__text">
+                  <strong>Solução:</strong>
+                  <p>Reestruturar em 7 páginas essenciais, com navegação clara e objetiva.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2 -->
+          <div class="panel panel--split" role="tabpanel" id="s-panel-1" aria-labelledby="s-tab-1" hidden>
+            <div class="panel__visual panel__visual--compare">
+              <div class="compare-side compare-side--old">
+                <span class="compare-tag">ATUAL</span>
+                <div class="compare-image-wrap">
+                  <img src="assets/print-hero.png" alt="Site atual">
+                  <div class="compare-error" style="top: 25%; left: 3%;">Visual datado</div>
+                  <div class="compare-error" style="top: 45%; left: 10%;">Hierarquia fraca</div>
+                  <div class="compare-error" style="top: 65%; left: 3%;">Poluição visual</div>
+                  <div class="compare-error" style="top: 85%; left: 10%;">Experiência cansativa</div>
+                </div>
+              </div>
+              <div class="compare-side compare-side--new">
+                <span class="compare-tag">PROPOSTO</span>
+                <div class="compare-image-wrap">
+                  <div class="mock-new-site">
+                    <div class="mock-header">
+                      <span class="mock-logo"></span>
+                      <span class="mock-menu"></span>
+                    </div>
+                    <div class="mock-hero">
+                      <div class="mock-hero-text"></div>
+                      <div class="mock-hero-img"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel__content">
+              <span class="diagnosis-tag">DIAGNÓSTICO 02/05</span>
+              <h3 class="diagnosis-title">DESIGN DATADO<br>E POUCO PROFISSIONAL</h3>
+              <ul class="diagnosis-list">
+                <li>Visual antigo e desalinhado com o posicionamento premium da clínica.</li>
+                <li>Tipografia, cores e elementos desatualizados.</li>
+                <li>Falta de hierarquia visual e respiro.</li>
+              </ul>
+              <div class="solution-box">
+                <div class="solution-box__icon">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                </div>
+                <div class="solution-box__text">
+                  <strong>Solução:</strong>
+                  <p>Novo design moderno, elegante e alinhado à autoridade da VetUnity.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3 -->
+          <div class="panel panel--split" role="tabpanel" id="s-panel-2" aria-labelledby="s-tab-2" hidden>
+            <div class="panel__visual panel__visual--funnel">
+              <div class="funnel-step">
+                <div class="funnel-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <strong>SEM AGENDAMENTO ONLINE</strong>
+                <p>Processo manual e dependente de WhatsApp.</p>
+              </div>
+              <div class="funnel-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <strong>PERDA DE LEADS</strong>
+                <p>Visitantes não encontram um caminho claro para agir.</p>
+              </div>
+              <div class="funnel-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <strong>BAIXA CONVERSÃO</strong>
+                <p>Menos agendamentos e encaminhamentos.</p>
+              </div>
+            </div>
+            <div class="panel__content">
+              <span class="diagnosis-tag">DIAGNÓSTICO 03/05</span>
+              <h3 class="diagnosis-title">CONVERSÃO<br>FRACA</h3>
+              <ul class="diagnosis-list">
+                <li>Não possui agendamento online.</li>
+                <li>Sem captura estruturada de leads.</li>
+                <li>CTAs pouco visíveis ou ineficientes.</li>
+                <li>Fluxo de atendimento não otimizado.</li>
+              </ul>
+              <div class="solution-box">
+                <div class="solution-box__icon">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                </div>
+                <div class="solution-box__text">
+                  <strong>Solução:</strong>
+                  <p>Agendamento online + captura inteligente de leads e CTAs estratégicos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4 -->
+          <div class="panel panel--split" role="tabpanel" id="s-panel-3" aria-labelledby="s-tab-3" hidden>
+            <div class="panel__visual panel__visual--grid">
+              <div class="auth-card">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+                <strong>SEM DEPOIMENTOS</strong>
+                <p>Falta de prova social de clientes.</p>
+              </div>
+              <div class="auth-card">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <strong>SEM CASES<br>OU RESULTADOS</strong>
+                <p>Não comunica a transformação gerada.</p>
+              </div>
+              <div class="auth-card">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M12 15l-3 3 1-5-4-3 5-.5L12 5l2 4.5 5 .5-4 3 1 5-3-3z"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <strong>SEM SELOS<br>OU CERTIFICAÇÕES</strong>
+                <p>Perde credibilidade e diferenciais técnicos.</p>
+              </div>
+              <div class="auth-card">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <strong>POUCO USO DA<br>EQUIPE MÉDICA</strong>
+                <p>Autoridade dos professores não é explorada.</p>
+              </div>
+            </div>
+            <div class="panel__content">
+              <span class="diagnosis-tag">DIAGNÓSTICO 04/05</span>
+              <h3 class="diagnosis-title">AUTORIDADE NÃO<br>COMUNICADA</h3>
+              <ul class="diagnosis-list">
+                <li>Ausência de depoimentos e casos reais.</li>
+                <li>Não destaca a equipe de especialistas.</li>
+                <li>Não transmite confiança e diferenciação.</li>
+                <li>Não utiliza o ativo social (Instagram).</li>
+              </ul>
+              <div class="solution-box">
+                <div class="solution-box__icon">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                </div>
+                <div class="solution-box__text">
+                  <strong>Solução:</strong>
+                  <p>Prova social, equipe em destaque e conexão com redes sociais.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5 -->
+          <div class="panel panel--split" role="tabpanel" id="s-panel-4" aria-labelledby="s-tab-4" hidden>
+            <div class="panel__visual panel__visual--mobile">
+              <div class="mobile-mock">
+                <img src="assets/print-mobile.png" alt="Mobile Site">
+              </div>
+              <div class="mobile-features">
+                <div class="mobile-feat">
+                  <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                  <div>
+                    <strong>NÃO RESPONSIVO</strong>
+                    <p>Experiência ruim no mobile.</p>
+                  </div>
+                </div>
+                <div class="mobile-feat">
+                  <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                  <div>
+                    <strong>SEO FRACO</strong>
+                    <p>Baixa visibilidade no Google.</p>
+                  </div>
+                </div>
+                <div class="mobile-feat">
+                  <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                  <div>
+                    <strong>CARREGAMENTO LENTO</strong>
+                    <p>Site pesado e pouco otimizado.</p>
+                  </div>
+                </div>
+                <div class="mobile-feat">
+                  <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                  <div>
+                    <strong>SEM PADRÕES TÉCNICOS</strong>
+                    <p>Estrutura técnica ultrapassada.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel__content">
+              <span class="diagnosis-tag">DIAGNÓSTICO 05/05</span>
+              <h3 class="diagnosis-title">BAIXO DESEMPENHO<br>E VISIBILIDADE</h3>
+              <ul class="diagnosis-list">
+                <li>Não é otimizado para dispositivos móveis.</li>
+                <li>SEO técnico fraco ou inexistente.</li>
+                <li>Carregamento lento e estrutura pesada.</li>
+                <li>Não segue boas práticas de performance.</li>
+              </ul>
+              <div class="solution-box">
+                <div class="solution-box__icon">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                </div>
+                <div class="solution-box__text">
+                  <strong>Solução:</strong>
+                  <p>Site rápido, responsivo e otimizado para SEO e performance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 4 — INVESTIMENTO (Simulador final e CTA)
+         ============================================================ -->
+    <section class="section" id="investimento" aria-labelledby="investimento-title">
+      <div class="container container--narrow">
+        <div class="section__head">
+          <p class="tape tape--tilt-r reveal" data-reveal>03 — Investimento</p>
+          <h2 class="section__title reveal grunge-text" style="--grunge-opacity: 0.70;" data-reveal id="investimento-title">
+            <span class="grunge-text__base">O custo de não ter<br>um site <em>bom.</em></span>
+            <span class="grunge-text__texture" aria-hidden="true">O custo de não ter<br>um site <em>bom.</em></span>
+          </h2>
+          <p class="section__lead reveal" data-reveal>
+            Com base no escopo e no desconto negociado, aqui está sua condição final.
+            O valor inclui design, implementação, e setup completo.
+          </p>
+        </div>
+        <div class="pricing reveal" data-reveal>
+          <p class="pricing__anchor">
+            Estimativa de Mercado:
+            <s id="investimento-anchor" aria-label="Valor estimado riscado">
+              R$&nbsp;5.000
+              <svg class="pricing__strike" viewBox="0 0 200 22" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="0" y1="11" x2="200" y2="11" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </s>
+          </p>
+
+          <div class="pricing__final-wrap">
+            <p class="pricing__final">
+              <span class="grunge-text" style="--grunge-opacity: 0.80;">
+                <span class="grunge-text__base"><span class="currency">R$</span><span data-counter-layer="final-counter" data-count-to="2750">2750</span></span>
+                <span class="grunge-text__texture" aria-hidden="true"><span class="currency">R$</span><span data-counter-layer="final-counter" data-count-to="2750">2750</span></span>
+              </span>
+            </p>
+            <span class="pricing__stamp" id="investimento-stamp" aria-label="45 por cento de desconto">-45%</span>
+          </div>
+          <!-- [PREÇO-FINAL]: R$275/página × 10 páginas = R$2750 -->
+          <div class="pricing__detail-stepper">
+            <button class="mini-stepper__btn mini-stepper__btn--down" id="mini-stepper-down" aria-label="Menos páginas">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <p class="pricing__detail" id="investimento-detail">10 páginas x R$ 275 = R$ 2.750</p>
+            <button class="mini-stepper__btn mini-stepper__btn--up" id="mini-stepper-up" aria-label="Mais páginas">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 15l7-7 7 7"/></svg>
+            </button>
+          </div>
+          
+          <div class="mini-addons">
+            <div class="mini-addon">
+              <button class="mini-addon__btn" data-addon-index="0">Copy</button>
+              <div class="mini-addon__gift-wrap"><span class="mini-addon__gift">+Brinde</span></div>
+            </div>
+            <div class="mini-addon">
+              <button class="mini-addon__btn" data-addon-index="1">Animação</button>
+            </div>
+            <div class="mini-addon">
+              <button class="mini-addon__btn" data-addon-index="2">CRM</button>
+              <div class="mini-addon__gift-wrap"><span class="mini-addon__gift">+Brinde</span></div>
+            </div>
+          </div>
+
+          <p class="pricing__compare" id="anchor-compare">
+            Até no mínimo da tabela (R$&nbsp;1.400) você pagaria quase o dobro.
+            No valor que você marcou (R$&nbsp;2.800), 3,6× mais.
+          </p>
+
+          <ul class="pricing__includes">
+            <li>7 páginas completas (design + implementação)</li>
+            <li>Novo UI premium com a identidade VetUnity</li>
+            <li>Formulário de captura + fluxo de encaminhamento</li>
+            <li>SEO técnico, performance e mobile-first</li>
+          </ul>
+
+          <div class="pricing__cta">
+            <a class="btn btn--primary btn--big btn--grunge" id="cta-final"
+               href="https://wa.me/5531991415564?text=Lucas%2C%20topo%20dar%20esse%20passo!%20Meu%20escopo%20simulado%20foi%20esse%3A"
+               target="_blank" rel="noopener">
+              <span class="btn__content">
+                Quero reformular o site da VetUnity
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>
+        Proposta preparada para a VetUnity Especialidades Veterinárias<br>
+        <!-- [CONTATO DO PRESTADOR] -->
+        <strong>LUCAS LIAM - 2026
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
