@@ -15,12 +15,10 @@
   <!-- Glitter WebGL de página inteira (port vanilla do 21st.dev) -->
   <canvas id="glitter" aria-hidden="true"></canvas>
 
-  <!-- Overlay grunge por cima de tudo (screen, .18) -->
-  <div class="grunge-overlay" aria-hidden="true">
-    <!-- Solte sua textura em assets/grunge-overlay.png; sem ela, cai no ruído SVG -->
-    <img src="assets/grunge-overlay.png" alt=""
-         onerror="this.parentElement.classList.add('grunge-overlay--fallback'); this.remove()">
-  </div>
+  <!-- Overlay grunge por cima de tudo (screen, .18).
+       Ruído claro em SVG: screen precisa de marcas claras sobre fundo escuro.
+       Para trocar por bitmap, aponte --tex-overlay no styles.css. -->
+  <div class="grunge-overlay" aria-hidden="true"></div>
 
   <!-- ============================================================
        NAVBAR
@@ -41,13 +39,13 @@
       <p class="tape reveal" data-reveal>Proposta comercial</p>
 
       <h1 class="hero__title reveal grunge-text" style="--grunge-opacity: 0.70; --grunge-size: 1500px auto;" data-reveal>
-        <span class="grunge-text__base">Um site à altura<br>da <em>VetUnity.</em></span>
-        <span class="grunge-text__texture" aria-hidden="true">Um site à altura<br>da <em>VetUnity.</em></span>
+        <span class="grunge-text__base">Seu site não está<br>à altura da <em>VetUnity.</em></span>
+        <span class="grunge-text__texture" aria-hidden="true">Seu site não está<br>à altura da <em>VetUnity.</em></span>
       </h1>
 
       <p class="hero__subtitle reveal" data-reveal>
-        Reformulação completa. 7 páginas.<br>
-        Mais agendamentos. Mais encaminhamentos. Mais autoridade.
+        25 anos de autoridade clínica, um site que não converte.<br>
+        Reformulação completa em 7 páginas: mais agendamentos, mais encaminhamentos.
       </p>
 
 
@@ -72,7 +70,7 @@
     <section class="section section--alt" id="estimativa" aria-labelledby="estimativa-title">
       <div class="container container--narrow">
         <div class="section__head">
-          <p class="tape tape--tilt-l reveal" data-reveal>Estimativa de Mercado</p>
+          <p class="tape tape--tilt-l reveal" data-reveal>01 &mdash; Estimativa de mercado</p>
           <h2 class="section__title reveal grunge-text" style="--grunge-opacity: 0.70;" data-reveal id="estimativa-title">
             <span class="grunge-text__base">Custo de produção<br><em>agência padrão.</em></span>
             <span class="grunge-text__texture" aria-hidden="true">Custo de produção<br><em>agência padrão.</em></span>
@@ -84,15 +82,18 @@
 
         <!-- Âncora interativa reestruturada -->
         <div class="anchor reveal" data-reveal>
-          <p class="anchor__label" id="slider-label">Número de Páginas</p>
+          <p class="anchor__label" id="slider-label">
+            Número de Páginas
+            <span class="anchor__hint">7 = escopo proposto</span>
+          </p>
 
           <div class="anchor__slider-row">
             <span class="anchor__bound">1<span class="anchor__per"> pág.</span></span>
             <div class="anchor__track-wrap">
-              <span class="anchor__chip" id="slider-chip" aria-hidden="true">10<span> págs.</span></span>
-              <!-- [PÁGINAS]: de 1 a 10 páginas -->
-              <input type="range" id="price-slider" min="1" max="10" step="1" value="10"
-                     aria-labelledby="slider-label" aria-valuetext="10 páginas">
+              <span class="anchor__chip" id="slider-chip" aria-hidden="true">7<span> págs.</span></span>
+              <!-- [PÁGINAS]: 1 a 10; abre em 7 (escopo proposto) -->
+              <input type="range" id="price-slider" min="1" max="10" step="1" value="7"
+                     aria-labelledby="slider-label" aria-valuetext="7 páginas">
             </div>
             <span class="anchor__bound">10<span class="anchor__per"> págs.</span></span>
           </div>
@@ -145,10 +146,10 @@
     <section class="section section--alt" id="plano" aria-labelledby="plano-title">
       <div class="container">
         <div class="section__head">
-          <p class="tape tape--tilt-l reveal" data-reveal>02 — Plano de ação</p>
+          <p class="tape tape--tilt-l reveal" data-reveal>02 &mdash; Diagnóstico &amp; plano</p>
           <h2 class="section__title reveal grunge-text" style="--grunge-opacity: 0.70;" data-reveal id="plano-title">
-            <span class="grunge-text__base">O tratamento:<br>reformulação <em>UX + UI.</em></span>
-            <span class="grunge-text__texture" aria-hidden="true">O tratamento:<br>reformulação <em>UX + UI.</em></span>
+            <span class="grunge-text__base">5 falhas.<br>5 <em>correções.</em></span>
+            <span class="grunge-text__texture" aria-hidden="true">5 falhas.<br>5 <em>correções.</em></span>
           </h2>
           <p class="section__lead reveal" data-reveal>
             Cada achado do diagnóstico tem uma solução direta. Site novo, enxuto,
@@ -159,17 +160,29 @@
         <div class="dossier window reveal" data-reveal data-tabs="solutions">
           <div class="window__halo" aria-hidden="true"></div>
 
-          <div class="tabs" role="tablist" aria-label="Soluções propostas">
-            <button class="tab is-active" role="tab" aria-selected="true" aria-controls="s-panel-0" id="s-tab-0"><span class="tab__num" aria-hidden="true">S.01</span>ARQUITETURA &amp; UX</button>
-            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-1" id="s-tab-1" tabindex="-1"><span class="tab__num" aria-hidden="true">S.02</span>NOVO UI</button>
-            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-2" id="s-tab-2" tabindex="-1"><span class="tab__num" aria-hidden="true">S.03</span>CONVERSÃO</button>
-            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-3" id="s-tab-3" tabindex="-1"><span class="tab__num" aria-hidden="true">S.04</span>AUTORIDADE</button>
-            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-4" id="s-tab-4" tabindex="-1"><span class="tab__num" aria-hidden="true">S.05</span>SEO &amp; MOBILE</button>
+          <div class="tabs" role="tablist" aria-label="Diagnóstico e correções">
+            <button class="tab is-active" role="tab" aria-selected="true" aria-controls="s-panel-0" id="s-tab-0"><span class="tab__num" aria-hidden="true">F.01</span>ARQUITETURA &amp; UX</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-1" id="s-tab-1" tabindex="-1"><span class="tab__num" aria-hidden="true">F.02</span>NOVO UI</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-2" id="s-tab-2" tabindex="-1"><span class="tab__num" aria-hidden="true">F.03</span>CONVERSÃO</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-3" id="s-tab-3" tabindex="-1"><span class="tab__num" aria-hidden="true">F.04</span>AUTORIDADE</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="s-panel-4" id="s-tab-4" tabindex="-1"><span class="tab__num" aria-hidden="true">F.05</span>SEO &amp; MOBILE</button>
           </div>
 
           <!-- TAB 1 -->
           <div class="panel panel--split is-active" role="tabpanel" id="s-panel-0" aria-labelledby="s-tab-0">
-            <div class="panel__visual panel__visual--flow">
+            <div class="panel__visual panel__visual--flow" data-proof>
+              <div class="proof-switch" role="group" aria-label="Alternar visualização">
+                <button type="button" class="proof-switch__btn is-active" data-proof-view="scheme">Esquema</button>
+                <button type="button" class="proof-switch__btn" data-proof-view="print">Print real</button>
+              </div>
+
+              <div class="proof-stack">
+              <figure class="proof-print is-hidden">
+                <img src="assets/print-navegacao.png" alt="Menu atual do site VetUnity com oito itens e submenus" loading="lazy">
+                <figcaption>vetunity.com.br &middot; menu com 8 itens e submenus por especialidade</figcaption>
+              </figure>
+
+              <div class="proof-scheme">
               <div class="flow-chart">
                 <div class="flow-node flow-node--root">HOME</div>
                 <div class="flow-branch">
@@ -184,12 +197,18 @@
                 </div>
               </div>
               <div class="visual-alert">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4m0 4h.01"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                  <path d="M12 9v4"/>
+                  <path d="M12 17h.01"/>
+                </svg>
                 <p><strong>Site atual:</strong> ~20 páginas, muitas repetidas ou vazias ("em breve").</p>
               </div>
+              </div>
+            </div>
             </div>
             <div class="panel__content">
-              <span class="diagnosis-tag">DIAGNÓSTICO 01/05</span>
+              <span class="diagnosis-tag">FALHA 01 / 05</span>
               <h3 class="diagnosis-title">NAVEGAÇÃO COMPLEXA<br>E INCHADA</h3>
               <ul class="diagnosis-list">
                 <li>Estrutura confusa e com excesso de páginas.</li>
@@ -199,10 +218,10 @@
               </ul>
               <div class="solution-box">
                 <div class="solution-box__icon">
-                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="" style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <div class="solution-box__text">
-                  <strong>Solução:</strong>
+                  <strong>Correção 01 / 05</strong>
                   <p>Reestruturar em 7 páginas essenciais, com navegação clara e objetiva.</p>
                 </div>
               </div>
@@ -239,7 +258,7 @@
               </div>
             </div>
             <div class="panel__content">
-              <span class="diagnosis-tag">DIAGNÓSTICO 02/05</span>
+              <span class="diagnosis-tag">FALHA 02 / 05</span>
               <h3 class="diagnosis-title">DESIGN DATADO<br>E POUCO PROFISSIONAL</h3>
               <ul class="diagnosis-list">
                 <li>Visual antigo e desalinhado com o posicionamento premium da clínica.</li>
@@ -248,10 +267,10 @@
               </ul>
               <div class="solution-box">
                 <div class="solution-box__icon">
-                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="" style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <div class="solution-box__text">
-                  <strong>Solução:</strong>
+                  <strong>Correção 02 / 05</strong>
                   <p>Novo design moderno, elegante e alinhado à autoridade da VetUnity.</p>
                 </div>
               </div>
@@ -260,7 +279,19 @@
 
           <!-- TAB 3 -->
           <div class="panel panel--split" role="tabpanel" id="s-panel-2" aria-labelledby="s-tab-2" hidden>
-            <div class="panel__visual panel__visual--funnel">
+            <div class="panel__visual panel__visual--funnel" data-proof>
+              <div class="proof-switch" role="group" aria-label="Alternar visualização">
+                <button type="button" class="proof-switch__btn is-active" data-proof-view="scheme">Esquema</button>
+                <button type="button" class="proof-switch__btn" data-proof-view="print">Print real</button>
+              </div>
+
+              <div class="proof-stack">
+              <figure class="proof-print is-hidden">
+                <img src="assets/print-conversao.png" alt="Rodape atual do site VetUnity, sem formulario ou agendamento" loading="lazy">
+                <figcaption>vetunity.com.br &middot; rodape sem formulario, agendamento ou CTA</figcaption>
+              </figure>
+
+              <div class="proof-scheme">
               <div class="funnel-step">
                 <div class="funnel-icon">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -289,8 +320,10 @@
                 <p>Menos agendamentos e encaminhamentos.</p>
               </div>
             </div>
+            </div>
+            </div>
             <div class="panel__content">
-              <span class="diagnosis-tag">DIAGNÓSTICO 03/05</span>
+              <span class="diagnosis-tag">FALHA 03 / 05</span>
               <h3 class="diagnosis-title">CONVERSÃO<br>FRACA</h3>
               <ul class="diagnosis-list">
                 <li>Não possui agendamento online.</li>
@@ -300,10 +333,10 @@
               </ul>
               <div class="solution-box">
                 <div class="solution-box__icon">
-                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="" style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <div class="solution-box__text">
-                  <strong>Solução:</strong>
+                  <strong>Correção 03 / 05</strong>
                   <p>Agendamento online + captura inteligente de leads e CTAs estratégicos.</p>
                 </div>
               </div>
@@ -312,7 +345,19 @@
 
           <!-- TAB 4 -->
           <div class="panel panel--split" role="tabpanel" id="s-panel-3" aria-labelledby="s-tab-3" hidden>
-            <div class="panel__visual panel__visual--grid">
+            <div class="panel__visual panel__visual--grid" data-proof>
+              <div class="proof-switch" role="group" aria-label="Alternar visualização">
+                <button type="button" class="proof-switch__btn is-active" data-proof-view="scheme">Esquema</button>
+                <button type="button" class="proof-switch__btn" data-proof-view="print">Print real</button>
+              </div>
+
+              <div class="proof-stack">
+              <figure class="proof-print is-hidden">
+                <img src="assets/print-equipe.png" alt="Secao Quem Somos atual com texto corrido e corpo clinico sem destaque" loading="lazy">
+                <figcaption>vetunity.com.br &middot; "Quem Somos" em texto corrido, sem prova social</figcaption>
+              </figure>
+
+              <div class="proof-scheme">
               <div class="auth-card">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
                 <strong>SEM DEPOIMENTOS</strong>
@@ -334,8 +379,10 @@
                 <p>Autoridade dos professores não é explorada.</p>
               </div>
             </div>
+            </div>
+            </div>
             <div class="panel__content">
-              <span class="diagnosis-tag">DIAGNÓSTICO 04/05</span>
+              <span class="diagnosis-tag">FALHA 04 / 05</span>
               <h3 class="diagnosis-title">AUTORIDADE NÃO<br>COMUNICADA</h3>
               <ul class="diagnosis-list">
                 <li>Ausência de depoimentos e casos reais.</li>
@@ -345,10 +392,10 @@
               </ul>
               <div class="solution-box">
                 <div class="solution-box__icon">
-                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="" style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <div class="solution-box__text">
-                  <strong>Solução:</strong>
+                  <strong>Correção 04 / 05</strong>
                   <p>Prova social, equipe em destaque e conexão com redes sociais.</p>
                 </div>
               </div>
@@ -393,7 +440,7 @@
               </div>
             </div>
             <div class="panel__content">
-              <span class="diagnosis-tag">DIAGNÓSTICO 05/05</span>
+              <span class="diagnosis-tag">FALHA 05 / 05</span>
               <h3 class="diagnosis-title">BAIXO DESEMPENHO<br>E VISIBILIDADE</h3>
               <ul class="diagnosis-list">
                 <li>Não é otimizado para dispositivos móveis.</li>
@@ -403,10 +450,10 @@
               </ul>
               <div class="solution-box">
                 <div class="solution-box__icon">
-                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                  <img src="assets/logo-lucas-liam-responsiva.svg" alt="" style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <div class="solution-box__text">
-                  <strong>Solução:</strong>
+                  <strong>Correção 05 / 05</strong>
                   <p>Site rápido, responsivo e otimizado para SEO e performance.</p>
                 </div>
               </div>
@@ -423,9 +470,9 @@
       <div class="container container--narrow">
         <div class="section__head">
           <p class="tape tape--tilt-r reveal" data-reveal>03 — Investimento</p>
-          <h2 class="section__title reveal grunge-text" style="--grunge-opacity: 0.70;" data-reveal id="investimento-title">
-            <span class="grunge-text__base">O custo de não ter<br>um site <em>bom.</em></span>
-            <span class="grunge-text__texture" aria-hidden="true">O custo de não ter<br>um site <em>bom.</em></span>
+          <h2 class="section__title section__title--oneline reveal grunge-text" style="--grunge-opacity: 0.70;" data-reveal id="investimento-title">
+            <span class="grunge-text__base">Sua condição <em>final.</em></span>
+            <span class="grunge-text__texture" aria-hidden="true">Sua condição <em>final.</em></span>
           </h2>
           <p class="section__lead reveal" data-reveal>
             Com base no escopo e no desconto negociado, aqui está sua condição final.
@@ -478,15 +525,16 @@
           </div>
 
           <p class="pricing__compare" id="anchor-compare">
-            Até no mínimo da tabela (R$&nbsp;1.400) você pagaria quase o dobro.
-            No valor que você marcou (R$&nbsp;2.800), 3,6× mais.
+            O mercado cobraria (R$&nbsp;3.500) ou mais.
+            Comigo você paga apenas R$&nbsp;1.925, o que é 1,8× menos.
           </p>
 
           <ul class="pricing__includes">
-            <li>7 páginas completas (design + implementação)</li>
+            <li><span id="includes-pages">7 páginas</span> completas (design + implementação)</li>
             <li>Novo UI premium com a identidade VetUnity</li>
             <li>Formulário de captura + fluxo de encaminhamento</li>
             <li>SEO técnico, performance e mobile-first</li>
+            <li>Prazo de entrega: <strong>30 dias</strong></li>
           </ul>
 
           <div class="pricing__cta">
@@ -508,8 +556,7 @@
     <div class="container footer__inner">
       <p>
         Proposta preparada para a VetUnity Especialidades Veterinárias<br>
-        <!-- [CONTATO DO PRESTADOR] -->
-        <strong>LUCAS LIAM - 2026
+        <strong>Lucas Liam</strong> &middot; 2026
       </p>
     </div>
   </footer>

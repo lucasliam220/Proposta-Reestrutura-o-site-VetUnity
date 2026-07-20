@@ -184,17 +184,10 @@
       investDetail.textContent = pages + ' páginas x R$ ' + Math.round(pricePerFinalPage) + ' = R$ ' + fmt.format(totalFinal);
     }
     
-    var investGifts = document.getElementById('investimento-gifts');
-    if (investGifts) {
-      if (giftNames.length > 0) {
-        var giftsHTML = '';
-        giftNames.forEach(function(g) {
-          giftsHTML += '<p>+ Brinde: ' + g + '</p>';
-        });
-        investGifts.innerHTML = giftsHTML;
-      } else {
-        investGifts.innerHTML = '';
-      }
+    // Escopo incluso acompanha o número de páginas escolhido
+    var includesPages = document.getElementById('includes-pages');
+    if (includesPages) {
+      includesPages.textContent = pages + (pages === 1 ? ' página' : ' páginas');
     }
     
     if (compareEl) {
@@ -206,11 +199,21 @@
     // Atualiza link do WhatsApp dinamicamente
     var ctaFinal = document.getElementById('cta-final');
     if (ctaFinal) {
+      // Adicionais pagos e brindes vão em linhas separadas: o cliente
+      // registra na conversa o que ganhou de graça.
+      var paidAddons = selectedAddons.filter(function (name) {
+        return giftNames.indexOf(name) === -1;
+      });
+
       var msg = 'Lucas, topo dar esse passo! Meu escopo simulado foi esse:\n\n';
       msg += '- ' + pages + ' páginas\n';
-      if (selectedAddons.length > 0) {
-        msg += '- Adicionais: ' + selectedAddons.join(', ') + '\n';
+      if (paidAddons.length > 0) {
+        msg += '- Adicionais: ' + paidAddons.join(', ') + '\n';
       }
+      if (giftNames.length > 0) {
+        msg += '- Brindes inclusos: ' + giftNames.join(', ') + '\n';
+      }
+      msg += '- Prazo: 30 dias\n';
       msg += '- Valor final com desconto: R$ ' + fmt.format(totalFinal);
       
       var waUrl = 'https://wa.me/5531991415564?text=' + encodeURIComponent(msg);
@@ -363,6 +366,35 @@
         if (currentIdx > 0) activate(currentIdx - 1, false);
       }
     }, {passive: true});
+  });
+
+  /* ---------- Prova: alterna esquema e print real no painel ---------- */
+  document.querySelectorAll('[data-proof]').forEach(function (visual) {
+    var buttons = Array.prototype.slice.call(visual.querySelectorAll('.proof-switch__btn'));
+    var scheme = visual.querySelector('.proof-scheme');
+    var print = visual.querySelector('.proof-print');
+    if (!scheme || !print) return;
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var showPrint = btn.dataset.proofView === 'print';
+        buttons.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+        // Camadas empilhadas: visibilidade em vez de display, altura não salta
+        scheme.classList.toggle('is-hidden', showPrint);
+        print.classList.toggle('is-hidden', !showPrint);
+
+        var shown = showPrint ? print : scheme;
+        if (hasAnime && !reducedMotion) {
+          window.anime.remove(shown);
+          window.anime({
+            targets: shown,
+            opacity: [0, 1],
+            duration: 280,
+            easing: 'easeOutCubic'
+          });
+        }
+      });
+    });
   });
 
   /* ---------- Spotlight glow dos dossiês (port GlowCard/21st.dev) ---------- */
